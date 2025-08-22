@@ -8,8 +8,10 @@ public class Main {
         Curso curso = new Curso("Programación I", 123); // Invoke Class
 
         Estudiante student = new Estudiante("Raul", "Rivera", "Email", "+57123", "ABD123", 20);
-        curso.agregarEstudiante(student); // calling a fun inside a class
+        Estudiante student2 = new Estudiante("Raul", "Rivera", "Email", "+57123", "ABD123", 20);
+        curso.agregarEstudiante(student);
+        curso.agregarEstudiante(student2);// calling a fun inside a class
         System.out.println(curso.toString());
-        System.out.println(student.toString());
+       // System.out.println(student.toString());
         }
     }

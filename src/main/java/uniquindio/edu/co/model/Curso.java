@@ -12,9 +12,10 @@ public class Curso {
     public boolean verificarStudent(Estudiante estudiante){
         // sentinel or flag
         boolean flag = false;
-        for (Estudiante student : listEstudiante){
-            if (student.getId().equals(estudiante.getId())){
+        for (Estudiante est : listEstudiante){
+            if (est.getId().equals(estudiante.getId())) {
                 flag = true; // ya existe con la misma id
+                break;
             }
         }
         return flag;
@@ -26,11 +27,12 @@ public class Curso {
         this.listEstudiante = new ArrayList<>(); // crear lista para almacenar estudiantes
     }
 
-    public void agregarEstudiante(Estudiante estudiante){
-        if (!verificarStudent(estudiante)){
-
+    public void agregarEstudiante(Estudiante estudiante) {
+        if (!verificarStudent(estudiante)) {
+            listEstudiante.add(estudiante);
+        } else {
+            System.out.println("Un estudiante no puede tener la misma ID"); // añadir estudiante a la lista
         }
-        listEstudiante.add(estudiante); // añadir estudiante a la lista
     }
 
     @Override
