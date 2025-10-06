@@ -1,0 +1,21 @@
+package unquindio.edu.co.model;
+
+import unquindio.edu.co.model.enums.RolTripulante;
+
+public class Tripulante {
+    private String id, nombre;
+    private int horasXp;
+
+    private RolTripulante rolTripulante;
+
+    private Mision theMision;
+    private Company theCompany;
+
+    public Tripulante(String id, String nombre, int horasXp, RolTripulante rolTripulante) {
+        this.id = id;
+        this.nombre = nombre;
+        this.horasXp = horasXp;
+        this.rolTripulante = rolTripulante;
+
+    }
+}
