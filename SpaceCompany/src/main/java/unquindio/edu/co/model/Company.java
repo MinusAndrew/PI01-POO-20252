@@ -17,5 +17,19 @@ public class Company {
         this.tripulanteList = new ArrayList<>();
     }
 
+    public void registrarNave(Nave nave){
+        naveList.add(nave);
+    }
+
+    public void registarTripulante(Tripulante tripulante){
+        tripulanteList.add(tripulante);
+    }
+
+    public void registrarMision(Mision mision){
+        misionList.add(mision);
+    }
+
+
+
 
 }

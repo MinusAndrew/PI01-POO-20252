@@ -16,6 +16,14 @@ public class Tripulante {
         this.nombre = nombre;
         this.horasXp = horasXp;
         this.rolTripulante = rolTripulante;
-
     }
+
+    public void setTheCompany(Company theCompany) {
+        this.theCompany = theCompany;
+    }
+
+    public void setTheMision(Mision theMision) {
+        this.theMision = theMision;
+    }
+
 }

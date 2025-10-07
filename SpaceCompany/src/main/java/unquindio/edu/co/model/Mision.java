@@ -18,13 +18,24 @@ public class Mision {
 
     private List<Tripulante> tripulanteMisionList;
 
-    public Mision(String destino, int duracionPrevista, MisionStatus misionStatus, MisionRisk misionRisk, Nave theNave) {
+    public Mision(String destino, int duracionPrevista, MisionStatus misionStatus, MisionRisk misionRisk, Company TheCompany, Nave theNave) {
         this.destino = destino;
         this.duracionPrevista = duracionPrevista;
         this.misionStatus = misionStatus;
         this.misionRisk = misionRisk;
+        this.theCompany = TheCompany;
         this.theNave = theNave;
         this.tripulanteMisionList = new ArrayList<>();
+    }
+
+    public void addTripulateToMision(Tripulante tripulante){
+        int capacity = theNave.getCapacidad();
+        if (tripulanteMisionList.size() != capacity){
+            tripulanteMisionList.add(tripulante);
+        }
+        else {
+            System.out.println("can't add more than " + capacity + " ppl on the ship");
+        }
     }
 
 
