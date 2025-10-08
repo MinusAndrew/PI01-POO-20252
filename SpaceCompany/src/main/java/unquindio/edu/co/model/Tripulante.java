@@ -24,10 +24,19 @@ public class Tripulante {
 
     public void setTheMision(Mision theMision) {
         this.theMision = theMision;
+        theMision.addTripulateToMision(this);
+    }
+
+    public void setRolTripulante(RolTripulante rolTripulante) {
+        this.rolTripulante = rolTripulante;
     }
 
     public String getId() {
         return id;
+    }
+
+    public RolTripulante getRolTripulante() {
+        return rolTripulante;
     }
 
     @Override
@@ -37,8 +46,8 @@ public class Tripulante {
                 ", nombre='" + nombre + '\'' +
                 ", horasXp=" + horasXp +
                 ", rolTripulante=" + rolTripulante +
-                ", theMision=" + theMision +
-                ", theCompany=" + theCompany +
+                ", theMision=" + theMision.getId() +
+                ", theCompany=" + theCompany.getName() +
                 '}';
     }
 }

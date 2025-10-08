@@ -7,8 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Mision {
-    private String destino;
+    private String destino,id;
     private int duracionPrevista;
+
 
     private MisionStatus misionStatus;
     private MisionRisk misionRisk;
@@ -18,13 +19,15 @@ public class Mision {
 
     private List<Tripulante> tripulanteMisionList;
 
-    public Mision(String destino, int duracionPrevista, MisionStatus misionStatus, MisionRisk misionRisk, Company TheCompany, Nave theNave) {
+    public Mision(String destino, String id, int duracionPrevista, MisionStatus misionStatus, MisionRisk misionRisk, Company TheCompany, Nave theNave) {
         this.destino = destino;
+        this.id = id;
         this.duracionPrevista = duracionPrevista;
         this.misionStatus = misionStatus;
         this.misionRisk = misionRisk;
         this.theCompany = TheCompany;
         this.theNave = theNave;
+        theNave.setTheMision(this);
         this.tripulanteMisionList = new ArrayList<>();
     }
 
@@ -38,9 +41,21 @@ public class Mision {
         }
     }
 
+    public String getId() {
+        return id;
+    }
 
-
-
-
-
+    @Override
+    public String toString() {
+        return "Mision{" +
+                "destino='" + destino + '\'' +
+                ", id='" + id + '\'' +
+                ", duracionPrevista=" + duracionPrevista +
+                ", misionStatus=" + misionStatus +
+                ", misionRisk=" + misionRisk +
+                ", theCompany=" + theCompany.getName() +
+                ", theNave=" + theNave.getId() +
+                ", tripulanteMisionList=" + tripulanteMisionList +
+                '}';
+    }
 }

@@ -1,5 +1,7 @@
 package unquindio.edu.co.model;
 
+import unquindio.edu.co.model.enums.RolTripulante;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +19,10 @@ public class Company {
         this.tripulanteList = new ArrayList<>();
     }
 
+    public void reasignarRolTripulante(Tripulante tripulante, RolTripulante rol){
+        tripulante.setRolTripulante(rol);
+    }
+
     public Tripulante searchTripulanteById(String id){
         for (Tripulante tripulantes : tripulanteList){
             String idFromTripulante = tripulantes.getId();
@@ -27,25 +33,65 @@ public class Company {
         return null;
     }
 
+    public String searchTripulantesByRole(List<Tripulante> tripulanteList){
+        String text = "";
+        for (RolTripulante roles : RolTripulante.values()){
+            text += "Rol: " + roles + "\n";
+            for (Tripulante tripulantes : tripulanteList){
+                if (tripulantes.getRolTripulante().equals(roles)){
+                    text += tripulantes.toString();
+                }
+            }
+        }
+
+        return text;
+    }
+
+    public void listarTripulantes(List<Tripulante> tripulanteList){
+        System.out.println(searchTripulantesByRole(tripulanteList));
+    }
+
+    public Nave searchNaveById(String id){
+        for (Nave naves : naveList){
+            String idFromNave = naves.getId();
+            if (id.equals(idFromNave)){
+                return naves;
+            }
+        }
+        return null;
+    }
+
+
     public void consultarTripulante(String id){
         Tripulante tripulante = searchTripulanteById(id);
         System.out.println(tripulante.toString());
     }
 
+    public void consultarNave(String id){
+       Nave nave = searchNaveById(id);
+       System.out.println(nave.toString());
+    }
+
 
     public void registrarNave(Nave nave){
         naveList.add(nave);
+        nave.setTheCompany(this);
     }
 
     public void registarTripulante(Tripulante tripulante){
         tripulanteList.add(tripulante);
+        tripulante.setTheCompany(this);
     }
 
     public void registrarMision(Mision mision){
         misionList.add(mision);
     }
 
+    public List<Tripulante> getTripulanteList() {
+        return tripulanteList;
+    }
 
-
-
+    public String getName() {
+        return name;
+    }
 }

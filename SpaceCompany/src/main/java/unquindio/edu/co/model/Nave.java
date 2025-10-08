@@ -30,9 +30,27 @@ public class Nave {
         TheMision = theMision;
     }
 
+
+
     public int getCapacidad() {
         return capacidad;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    @Override
+    public String toString() {
+        return "Nave{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", capacidad=" + capacidad +
+                ", combustibleLvl=" + combustibleLvl +
+                ", naveStatus=" + naveStatus +
+                ", theCompany=" + theCompany.getName() +
+                ", TheMision=" + TheMision +
+                '}';
+    }
 }
 
