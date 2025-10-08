@@ -26,4 +26,19 @@ public class Tripulante {
         this.theMision = theMision;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    @Override
+    public String toString() {
+        return "Tripulante{" +
+                "id='" + id + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", horasXp=" + horasXp +
+                ", rolTripulante=" + rolTripulante +
+                ", theMision=" + theMision +
+                ", theCompany=" + theCompany +
+                '}';
+    }
 }

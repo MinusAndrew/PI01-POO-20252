@@ -17,6 +17,22 @@ public class Company {
         this.tripulanteList = new ArrayList<>();
     }
 
+    public Tripulante searchTripulanteById(String id){
+        for (Tripulante tripulantes : tripulanteList){
+            String idFromTripulante = tripulantes.getId();
+            if (id.equals(idFromTripulante)){
+                return tripulantes;
+            }
+        }
+        return null;
+    }
+
+    public void consultarTripulante(String id){
+        Tripulante tripulante = searchTripulanteById(id);
+        System.out.println(tripulante.toString());
+    }
+
+
     public void registrarNave(Nave nave){
         naveList.add(nave);
     }
