@@ -27,8 +27,8 @@ public class Mision {
         this.misionRisk = misionRisk;
         this.theCompany = TheCompany;
         this.theNave = theNave;
-        theNave.setTheMision(this);
         this.tripulanteMisionList = new ArrayList<>();
+        theNave.setTheMision(this);
     }
 
     public void addTripulateToMision(Tripulante tripulante){
