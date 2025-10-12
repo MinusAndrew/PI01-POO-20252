@@ -1,30 +1,30 @@
 package unquindio.edu.co.model;
 
-import unquindio.edu.co.model.enums.RolTripulante;
+import unquindio.edu.co.model.enums.CrewmanRole;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Company {
     private String name, id;
-    private List<Nave> naveList;
-    private List<Mision> misionList;
-    private List<Tripulante> tripulanteList;
+    private List<Ship> shipList;
+    private List<Mission> missionList;
+    private List<Crewman> crewmanList;
 
     public Company(String name, String id) {
         this.name = name;
         this.id = id;
-        this.naveList = new ArrayList<>();
-        this.misionList = new ArrayList<>();
-        this.tripulanteList = new ArrayList<>();
+        this.shipList = new ArrayList<>();
+        this.missionList = new ArrayList<>();
+        this.crewmanList = new ArrayList<>();
     }
 
-    public void reasignarRolTripulante(Tripulante tripulante, RolTripulante rol){
-        tripulante.setRolTripulante(rol);
+    public void reassignCrewmanRole(Crewman crewman, CrewmanRole rol){
+        crewman.setCrewmanRole(rol);
     }
 
-    public Tripulante searchTripulanteById(String id){
-        for (Tripulante tripulantes : tripulanteList){
+    public Crewman searchTripulanteById(String id){
+        for (Crewman tripulantes : crewmanList){
             String idFromTripulante = tripulantes.getId();
             if (id.equals(idFromTripulante)){
                 return tripulantes;
@@ -33,12 +33,12 @@ public class Company {
         return null;
     }
 
-    public String searchTripulantesByRole(List<Tripulante> tripulanteList){
+    public String searchCrewmanByRole(List<Crewman> crewmanList){
         String text = "";
-        for (RolTripulante roles : RolTripulante.values()){
+        for (CrewmanRole roles : CrewmanRole.values()){
             text += "Rol: " + roles + "\n";
-            for (Tripulante tripulantes : tripulanteList){
-                if (tripulantes.getRolTripulante().equals(roles)){
+            for (Crewman tripulantes : crewmanList){
+                if (tripulantes.getCrewmanRole().equals(roles)){
                     text += tripulantes.toString();
                 }
             }
@@ -47,12 +47,12 @@ public class Company {
         return text;
     }
 
-    public void listarTripulantes(List<Tripulante> tripulanteList){
-        System.out.println(searchTripulantesByRole(tripulanteList));
+    public void listCrewman(List<Crewman> crewmanList){
+        System.out.println(searchCrewmanByRole(crewmanList));
     }
 
-    public Nave searchNaveById(String id){
-        for (Nave naves : naveList){
+    public Ship searchShipById(String id){
+        for (Ship naves : shipList){
             String idFromNave = naves.getId();
             if (id.equals(idFromNave)){
                 return naves;
@@ -62,33 +62,33 @@ public class Company {
     }
 
 
-    public void consultarTripulante(String id){
-        Tripulante tripulante = searchTripulanteById(id);
-        System.out.println(tripulante.toString());
+    public void checkCrewman(String id){
+        Crewman crewman = searchTripulanteById(id);
+        System.out.println(crewman.toString());
     }
 
-    public void consultarNave(String id){
-       Nave nave = searchNaveById(id);
-       System.out.println(nave.toString());
+    public void checkShip(String id){
+       Ship ship = searchShipById(id);
+       System.out.println(ship.toString());
     }
 
 
-    public void registrarNave(Nave nave){
-        naveList.add(nave);
-        nave.setTheCompany(this);
+    public void registerShip(Ship ship){
+        shipList.add(ship);
+        ship.setTheCompany(this);
     }
 
-    public void registarTripulante(Tripulante tripulante){
-        tripulanteList.add(tripulante);
-        tripulante.setTheCompany(this);
+    public void registerCrewman(Crewman crewman){
+        crewmanList.add(crewman);
+        crewman.setTheCompany(this);
     }
 
-    public void registrarMision(Mision mision){
-        misionList.add(mision);
+    public void registerMission(Mission mission){
+        missionList.add(mission);
     }
 
-    public List<Tripulante> getTripulanteList() {
-        return tripulanteList;
+    public List<Crewman> getCrewmanList() {
+        return crewmanList;
     }
 
     public String getName() {

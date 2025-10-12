@@ -1,5 +1,5 @@
 package unquindio.edu.co.model.enums;
 
-public enum MisionRisk {
+public enum MissionRisk {
     HIGH, MEDIUM, LOW, NONE
 }

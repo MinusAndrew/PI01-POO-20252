@@ -1,5 +1,5 @@
 package unquindio.edu.co.model.enums;
 
-public enum NaveStatus {
+public enum ShipStatus {
     OPTIMAL, DAMAGED, REPAIRED
 }
