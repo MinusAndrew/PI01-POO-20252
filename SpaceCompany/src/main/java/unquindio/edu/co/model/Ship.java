@@ -8,9 +8,10 @@ public class Ship {
 
     private ShipStatus shipStatus;
 
-
     private Company theCompany;
     private Mission theMission;
+
+    private boolean isInMission;
 
     public Ship(String id, String name, int capacity, int fuelLvl, ShipStatus shipStatus) {
         this.id = id;
@@ -26,6 +27,7 @@ public class Ship {
 
     public void setTheMission(Mission theMission) {
         this.theMission = theMission;
+        isInMission = true;
     }
 
 
@@ -38,6 +40,14 @@ public class Ship {
         return id;
     }
 
+    public Mission getTheMission() {
+        return theMission;
+    }
+
+    public boolean getIsInMission() {
+        return isInMission;
+    }
+
     @Override
     public String toString() {
         return "Nave{" +
@@ -48,7 +58,8 @@ public class Ship {
                 ", naveStatus=" + shipStatus +
                 ", theCompany=" + theCompany.getName() +
                 ", TheMision=" + theMission +
-                '}';
+                '}' +
+                '\n';
     }
 }
 

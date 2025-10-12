@@ -5,12 +5,12 @@ import unquindio.edu.co.model.enums.ShipStatus;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Estacion extends Ship {
+public class Station extends Ship {
 
     private List<String> modulos;
 
-    public Estacion(String id, String name, int capacidad, int combustibleLvl, ShipStatus shipStatus) {
-        super(id, name, capacidad, combustibleLvl, shipStatus);
+    public Station(String id, String name, int capacity, int fuelLvl, ShipStatus shipStatus) {
+        super(id, name, capacity, fuelLvl, shipStatus);
         this.modulos = new ArrayList<>();
     }
 
