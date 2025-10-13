@@ -46,7 +46,7 @@ public class Crewman {
                 ", nombre='" + name + '\'' +
                 ", horasXp=" + XpHours +
                 ", rolTripulante=" + crewmanRole +
-                ", theMision=" + theMission.getId() +
+                //", theMision=" + theMission.getId() +
                 ", theCompany=" + theCompany.getName() +
                 '}';
     }

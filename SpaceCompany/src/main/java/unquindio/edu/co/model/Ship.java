@@ -1,5 +1,4 @@
 package unquindio.edu.co.model;
-
 import unquindio.edu.co.model.enums.ShipStatus;
 
 public class Ship {

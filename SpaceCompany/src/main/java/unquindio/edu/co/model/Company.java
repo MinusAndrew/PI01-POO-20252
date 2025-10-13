@@ -2,10 +2,11 @@ package unquindio.edu.co.model;
 
 import unquindio.edu.co.model.enums.CrewmanRole;
 
-import java.awt.font.ShapeGraphicAttribute;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import static unquindio.edu.co.Main.*;
 
 public class Company {
     private String name, id;
@@ -21,42 +22,43 @@ public class Company {
         this.crewmanList = new ArrayList<>();
     }
 
-    public void cliShipRegister(){
-        System.out.println();
-
-    }
-
 
     public void cliCheckShip(){
-
-
-
-
-
+        String input;
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Type the ID of the Ship u want to search: ");
+        input = scan.nextLine();
+        Ship ship = searchShipById(input);
+        System.out.println(ship);
     }
 
     public void cliDeleteShip(){
-
-
-
-
-
-    }
-
-    public void cliRegisterCrewman(){
-
-
-
+        String input;
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Type the ID of the Ship u want to delete: ");
+        input = scan.nextLine();
+        Ship ship = searchShipById(input);
+        deleteShip(ship, input);
     }
 
     public void cliCheckCrewman(){
-
-
+        String input;
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Type the ID of the Ship u want to delete: ");
+        input = scan.nextLine();
+        Crewman crewman = searchCrewmanById(input);
+        System.out.println(crewman.toString());
     }
 
     public void cliRegisterMission(){
+        String id = generateId();
+        String destination;
 
 
+
+
+
+        Mission mission = new Mission();
 
 
 
@@ -77,20 +79,17 @@ public class Company {
         System.out.println(registeredShips);
     }
 
-    public void deleteShip(String id, List<Ship> shipList){
-        for (Ship thisShip : shipList){
-            if (thisShip.getId().equals(id)){
-                if (thisShip.getIsInMission()){
-                    System.out.println("The Ship can't be Removed cuz it is in Mission ID:" + thisShip.getTheMission().getId());
+    public void deleteShip(Ship ship, String id){
+            if (ship.getId().equals(id)){
+                if (ship.getIsInMission()){
+                    System.out.println("The Ship can't be Removed cuz it is in Mission ID:" + ship.getTheMission().getId());
                 }
             }
             else {
-                shipList.remove(thisShip);
-                System.out.println("The Ship ID: " + thisShip.getId() + " Has been removed.");
-                break;
+                shipList.remove(ship);
+                System.out.println("The Ship ID: " + ship.getId() + " Has been removed.");
             }
         }
-    }
 
     public void mainMenu(){
         int mainSelect = -1;
@@ -101,7 +100,7 @@ public class Company {
         }
         switch (mainSelect){
             case (1):
-                cliShipRegister();
+                registerShip(cliCreateShip(this));
                 break;
             case (2):
                 cliCheckShip();
@@ -113,7 +112,7 @@ public class Company {
                 cliDeleteShip();
                 break;
             case (5):
-                cliRegisterCrewman();
+                registerCrewman(cliCreateCrewman(this));
                 break;
             case (6):
                 cliCheckCrewman();
@@ -144,7 +143,7 @@ public class Company {
         return null;
     }
 
-    public String searchCrewmanByRole(List<Crewman> crewmanList){
+    public String enlistCrewmanByRole(List<Crewman> crewmanList){
         String text = "";
         for (CrewmanRole roles : CrewmanRole.values()){
             text += "Rol: " + roles + "\n";
@@ -159,14 +158,24 @@ public class Company {
     }
 
     public void listCrewmanByRole(List<Crewman> crewmanList){
-        System.out.println(searchCrewmanByRole(crewmanList));
+        System.out.println(enlistCrewmanByRole(crewmanList));
     }
 
     public Ship searchShipById(String id){
-        for (Ship naves : shipList){
-            String idFromNave = naves.getId();
+        for (Ship ships : getShipList()){
+            String idFromNave = ships.getId();
             if (id.equals(idFromNave)){
-                return naves;
+                return ships;
+            }
+        }
+        return null;
+    }
+
+    public Crewman searchCrewmanById(String id){
+        for (Crewman crewman : getCrewmanList()){
+            String idFromCrewman = crewman.getId();
+            if (id.equals(idFromCrewman)){
+                return crewman;
             }
         }
         return null;
