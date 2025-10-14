@@ -16,6 +16,7 @@ public class Main {
         while (keepOn == -1){
             company.mainMenu();
             keepOn = company.getKeepRunning();
+            //something happened tf
         }
     }
 
