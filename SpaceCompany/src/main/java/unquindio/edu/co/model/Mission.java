@@ -19,7 +19,7 @@ public class Mission {
 
     private List<Crewman> crewmanMisionList;
 
-    public Mission(String destination, String id, int estimatedTime, MissionStatus missionStatus, MissionRisk missionRisk, Company TheCompany, Ship theShip) {
+    public Mission(int estimatedTime, String destination, String id, MissionStatus missionStatus, MissionRisk missionRisk, Company TheCompany, Ship theShip) {
         this.destination = destination;
         this.id = id;
         this.estimatedTime = estimatedTime;
@@ -36,6 +36,7 @@ public class Mission {
         if (crewmanMisionList.size() != capacity){
             crewmanMisionList.add(crewman);
             crewman.setTheMission(this);
+            System.out.println("The crewman has been added to the mission ID: " + getId());
         }
         else {
             System.out.println("can't add more than " + capacity + " ppl on the ship");
@@ -44,6 +45,10 @@ public class Mission {
 
     public String getId() {
         return id;
+    }
+
+    public void setTheShip(Ship theShip) {
+        this.theShip = theShip;
     }
 
     @Override

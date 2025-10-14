@@ -15,30 +15,32 @@ public class Main {
         Company company = new Company("SpaceX", "X211");
         while (keepOn == -1){
             company.mainMenu();
+            keepOn = company.getKeepRunning();
         }
     }
-
-
 
     public static Ship cliCreateShip(Company company){
         int capacity;
         int fuelLvl;
-        int option = -1;
         String id = generateId();
         String name;
+        String statusInput;
 
-        System.out.print("Type a name:");
+        System.out.print("Type a name: ");
         Scanner scan = new Scanner(System.in);
         name = scan.nextLine();
 
-        System.out.print("Type the max amount of Passengers of the Ship:");
+        System.out.print("Type the max amount of Passengers of the Ship: ");
         capacity = scan.nextInt();
 
-        System.out.print("Type the fuel level that the Ship has:");
+        System.out.print("Type the fuel level that the Ship has: ");
         fuelLvl = scan.nextInt();
+        scan.nextLine();
 
         System.out.print("Select the status of the ship: ");
-        Ship ship = new Ship(id,name,capacity,fuelLvl, ShipStatus.NEW);
+        statusInput = scan.nextLine();
+
+        Ship ship = new Ship(id,name,capacity,fuelLvl, ShipStatus.valueOf(statusInput.toUpperCase()));
         return ship;
     }
 

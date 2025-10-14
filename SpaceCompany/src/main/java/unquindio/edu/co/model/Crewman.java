@@ -24,7 +24,6 @@ public class Crewman {
 
     public void setTheMission(Mission theMission) {
         this.theMission = theMission;
-        theMission.addCrewmanToMission(this);
     }
 
     public void setCrewmanRole(CrewmanRole crewmanRole) {
